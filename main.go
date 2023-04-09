@@ -1,34 +1,19 @@
 package main
 
 import (
-	"fmt"
+	"os"
 
-	"github.com/shripadmhetre/golang-oops/composition"
-	"github.com/shripadmhetre/golang-oops/encapsulation"
-	"github.com/shripadmhetre/golang-oops/polymorphism"
+	"github.com/shripadmhetre/golang-learnings/di"
+	"github.com/shripadmhetre/golang-learnings/oops"
 )
 
 func main() {
-	// Encapsulation :-
-	p := encapsulation.NewOffer(1001, "ADSS")
-	p1 := encapsulation.NewOffer(2001, "ACS")
+	arg1 := os.Args[1]
 
-	r := p.Equals(p1)
-
-	if r {
-		fmt.Println("both objects are equal")
-	} else {
-		fmt.Println("objects are not equal")
+	// use arg1 to decide which packages to call
+	if arg1 == "di" {
+		di.Main()
+	} else if arg1 == "oops" {
+		oops.Main()
 	}
-
-	// Polymorphism :-
-	c := polymorphism.Circle{}
-	s := polymorphism.Square{}
-
-	c.Render()
-	s.Render()
-
-	// Composition :-
-	car := composition.NewCar("car1", "en1", "wh1", 600, 123)
-	fmt.Println(car.EngineName(), car.WheelName())
 }
