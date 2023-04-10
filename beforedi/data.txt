@@ -1,0 +1,2 @@
+Running GetAll:
+Response from - http://example.com, Response from - https://lorem-ipsum.in, 

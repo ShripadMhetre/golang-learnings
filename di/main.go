@@ -1,56 +1,23 @@
 package di
 
 import (
-	"bytes"
 	"fmt"
+	"github.com/shripadmhetre/golang-learnings/di/client"
+	"github.com/shripadmhetre/golang-learnings/di/service"
+	"os"
 )
 
-type Logger struct{}
-
-func (logger *Logger) Log(message string) {
-	fmt.Println(message)
-}
-
-type HttpClient struct {
-	logger *Logger
-}
-
-func (client *HttpClient) Get(url string) string {
-	client.logger.Log("Getting " + url)
-
-	// make an HTTP request
-	return "Response from - " + url
-}
-
-func NewHttpClient(logger *Logger) *HttpClient {
-	return &HttpClient{logger}
-}
-
-type ConcatService struct {
-	logger *Logger
-	client *HttpClient
-}
-
-func (service *ConcatService) GetAll(urls ...string) string {
-	service.logger.Log("Running GetAll :-")
-
-	var result bytes.Buffer
-
-	for _, url := range urls {
-		result.WriteString(service.client.Get(url) + " ")
-	}
-
-	return result.String()
-}
-
-func NewConcatService(logger *Logger, client *HttpClient) *ConcatService {
-	return &ConcatService{logger, client}
-}
-
 func Main() {
-	logger := &Logger{}
-	client := NewHttpClient(logger)
-	service := NewConcatService(logger, client)
+	fl, err := os.OpenFile("di/logs/data.txt", os.O_RDWR, 0755)
+
+	if err != nil {
+		panic(err)
+	}
+	defer fl.Close()
+
+	logger := &client.FileLogger{File: fl}
+	httpClient := client.NewHttpClient(logger)
+	service := service.NewConcatService(logger, httpClient)
 
 	// service := CreateConcatService()
 

@@ -2,17 +2,22 @@ package service
 
 import (
 	"bytes"
+	"fmt"
 
 	"github.com/shripadmhetre/golang-learnings/di/client"
 )
 
 type ConcatService struct {
-	logger *client.Logger
+	logger client.Logger
 	client *client.HttpClient
 }
 
 func (service *ConcatService) GetAll(urls ...string) string {
-	service.logger.Log("Running GetAll :-")
+	err := service.logger.Log("Running GetAll:\n")
+
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	var result bytes.Buffer
 
@@ -20,9 +25,16 @@ func (service *ConcatService) GetAll(urls ...string) string {
 		result.WriteString(service.client.Get(url) + " ")
 	}
 
-	return result.String()
+	resultStr := result.String()
+
+	err = service.logger.Log(resultStr)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	return resultStr
 }
 
-func NewConcatService(logger *client.Logger, client *client.HttpClient) *ConcatService {
+func NewConcatService(logger client.Logger, client *client.HttpClient) *ConcatService {
 	return &ConcatService{logger, client}
 }

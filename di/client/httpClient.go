@@ -1,24 +1,45 @@
 package client
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
-type Logger struct{}
+type Logger interface {
+	Log(message string) error
+}
 
-func (logger *Logger) Log(message string) {
-	fmt.Println(message)
+type FileLogger struct {
+	File *os.File
+}
+
+func (l *FileLogger) Log(message string) error {
+	_, err := l.File.Write([]byte(message))
+	return err
+}
+
+type StdoutLogger struct{}
+
+func (l *StdoutLogger) Log(message string) error {
+	_, err := fmt.Println(message)
+	return err
 }
 
 type HttpClient struct {
-	logger *Logger
+	logger Logger
 }
 
 func (client *HttpClient) Get(url string) string {
-	client.logger.Log("Getting " + url)
+	err := client.logger.Log("Getting " + url + "\n")
+
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	// make an HTTP request
 	return "Response from - " + url
 }
 
-func NewHttpClient(logger *Logger) *HttpClient {
+func NewHttpClient(logger Logger) *HttpClient {
 	return &HttpClient{logger}
 }
