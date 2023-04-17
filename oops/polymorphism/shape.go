@@ -2,6 +2,8 @@ package polymorphism
 
 import "fmt"
 
+// Polymorphism achieved through interfaces in Golang
+
 type Shape interface {
 	Render()
 }

@@ -38,7 +38,7 @@ func (o *offer) Name() string {
 
 func (o *ADSS) SetStorageType(storageType string) error {
 	if storageType != "File" && storageType != "Block" && storageType != "BackupTarget" {
-		return errors.New("invalid Storage Type")
+		return errors.New("invalid storage type")
 	}
 	o.storageType = storageType
 	return nil

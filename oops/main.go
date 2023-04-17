@@ -24,7 +24,7 @@ func Main() {
 		log.Fatal("error setting storageType: ", err)
 	}
 
-	err = myOffer.SetCapacity(9)
+	err = myOffer.SetCapacity(50)
 	if err != nil {
 		log.Fatal("error setting baseCapacity: ", err)
 	}
