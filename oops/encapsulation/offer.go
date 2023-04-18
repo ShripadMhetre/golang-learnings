@@ -5,6 +5,11 @@ import (
 	"fmt"
 )
 
+/*
+	Encapsulation: "Information hiding"
+		Binding the data and methods together of an object.
+*/
+
 type offer struct {
 	offerId            uint
 	name               string
@@ -61,14 +66,19 @@ func (o *ADSS) BaseCapacity() string {
 }
 
 // Constructor function
-//func NewOffer(id int, nm string) ADSS {
-//	return ADSS{
-//		offer: offer{offerId: },
-//	}
-//}
 
-//
-//// for Comparable functionality
-//func (o Offer) Equals(o1 Offer) bool {
-//	return o.id == o1.id
+func NewOffer(name, storageType string, baseCap float32) ADSS {
+	return ADSS{
+		offer:        offer{offerId: 2001, name: name},
+		storageType:  storageType,
+		baseCapacity: baseCap,
+	}
+}
+
+//func NewOffer(o offer, name, storageType string, baseCap float32) ADSS {
+//	return ADSS{
+//		offer:        o,
+//		storageType:  storageType,
+//		baseCapacity: baseCap,
+//	}
 //}

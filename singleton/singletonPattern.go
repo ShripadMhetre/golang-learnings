@@ -7,8 +7,7 @@ import (
 
 var lock = &sync.Mutex{}
 
-type single struct {
-}
+type single struct{}
 
 var singleInstance *single
 
