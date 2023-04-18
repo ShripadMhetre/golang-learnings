@@ -20,8 +20,6 @@ func Main() {
 	httpClient := httpclient.NewHttpClient(logger2)
 	service := service.NewConcatService(logger, httpClient)
 
-	// service := CreateConcatService()
-
 	result := service.GetAll(
 		"http://example.com",
 		"https://lorem-ipsum.in",

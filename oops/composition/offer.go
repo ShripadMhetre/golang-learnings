@@ -4,8 +4,8 @@ import "fmt"
 
 /*
 	1. Inheritance is static. You can’t alter the behavior of an existing object at runtime.
-		You can only replace the whole object with another one that’s created from a different subclass.
-	2. Subclasses can have just one parent class, in most languages.
+	2. With composition, it's easy to change behavior on the fly with Dependency Injection / Setters.
+		Inheritance is more rigid as most languages do not allow you to derive from more than one type.
 */
 
 type Offer struct {

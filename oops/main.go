@@ -1,17 +1,23 @@
 package oops
 
-func Main() {
-	//// Composition :-
-	//myOffer := composition.ADSS{
-	//	Offer:        composition.Offer{OfferId: 2001, Name: "Test Offer", AvailableCountries: []string{"US", "Germany"}},
-	//	StorageType:  "File",
-	//	BaseCapacity: 50,
-	//}
-	//
-	//fmt.Println(myOffer)
+import (
+	"fmt"
+	"github.com/shripadmhetre/golang-learnings/oops/composition"
+)
 
-	// Encapsulation :-
+func Main() {
+	// Composition :-
+	myOffer := composition.ADSS{
+		Offer:        composition.Offer{OfferId: 2001, Name: "Test Offer", AvailableCountries: []string{"US", "Germany"}},
+		StorageType:  "File",
+		BaseCapacity: 50,
+	}
+
+	fmt.Println(myOffer)
+
+	//// Encapsulation :-
 	//myOffer := encapsulation.ADSS{}
+	//myOffer.SetOfferId(2001)
 	//myOffer.SetName("myOffer")
 	//err := myOffer.SetStorageType("Block")
 	//if err != nil {
@@ -30,8 +36,7 @@ func Main() {
 	//fmt.Println(myOffer)
 
 	//
-	// Polymorphism :-
-
+	//// Polymorphism :-
 	//ecObj := polymorphism.EndCustomer{}
 	//resObj := polymorphism.Reseller{}
 	//distObj := polymorphism.Distributor{}

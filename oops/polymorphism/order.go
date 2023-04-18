@@ -4,12 +4,12 @@ import "fmt"
 
 /*
 	Polymorphism :-
-		- achieved through interfaces in Golang.
+		- Achieved through interfaces in Golang.
 		- Only Overriding
-		- Method Overloading not possible
+		- Method & Operator Overloading not possible
 
-	Why does Go not support overloading of methods and operators?
-		Method dispatch is simplified if it doesn't need to do type matching as well. Matching only by name
+	Q. Why does Go not support overloading of methods and operators?
+		Method dispatch is simplified if it doesn't need to do type matching. Matching only by name
 		and requiring consistency in the types was a major simplifying decision in Go's type system.
 		Regarding "operator overloading", it seems more a convenience than an absolute requirement. Again, things are simpler without it.
 

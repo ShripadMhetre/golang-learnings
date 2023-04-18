@@ -41,6 +41,15 @@ func (o *offer) Name() string {
 	return o.name
 }
 
+func (o *offer) SetOfferId(offerId uint) error {
+	o.offerId = offerId
+	return nil
+}
+
+func (o *offer) OfferId() uint {
+	return o.offerId
+}
+
 func (o *ADSS) SetStorageType(storageType string) error {
 	if storageType != "File" && storageType != "Block" && storageType != "BackupTarget" {
 		return errors.New("invalid storage type")
