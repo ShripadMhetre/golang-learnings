@@ -1,4 +1,2 @@
 Running GetAll:
-Getting http://example.com
-Getting https://lorem-ipsum.in
-Response from - http://example.com Response from - https://lorem-ipsum.in 
+Response from - http://example.com, Response from - https://lorem-ipsum.in, 

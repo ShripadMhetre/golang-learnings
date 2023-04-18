@@ -4,12 +4,12 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/shripadmhetre/golang-learnings/di/client"
+	"github.com/shripadmhetre/golang-learnings/di/httpclient"
 )
 
 type ConcatService struct {
-	logger client.Logger
-	client *client.HttpClient
+	logger httpclient.Logger
+	client *httpclient.HttpClient
 }
 
 func (service *ConcatService) GetAll(urls ...string) string {
@@ -22,7 +22,7 @@ func (service *ConcatService) GetAll(urls ...string) string {
 	var result bytes.Buffer
 
 	for _, url := range urls {
-		result.WriteString(service.client.Get(url) + " ")
+		result.WriteString(service.client.Get(url) + ", ")
 	}
 
 	resultStr := result.String()
@@ -35,6 +35,6 @@ func (service *ConcatService) GetAll(urls ...string) string {
 	return resultStr
 }
 
-func NewConcatService(logger client.Logger, client *client.HttpClient) *ConcatService {
+func NewConcatService(logger httpclient.Logger, client *httpclient.HttpClient) *ConcatService {
 	return &ConcatService{logger, client}
 }

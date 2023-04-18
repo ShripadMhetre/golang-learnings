@@ -64,7 +64,14 @@ func (service *ConcatService) GetAll(urls ...string) string {
 		result.WriteString(service.client.Get(url) + ", ")
 	}
 
-	return result.String()
+	resultStr := result.String()
+
+	err = service.logger.Log(resultStr)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	return resultStr
 }
 
 func NewConcatService() *ConcatService {
@@ -91,5 +98,6 @@ func Main() {
 		"https://lorem-ipsum.in",
 	)
 
-	service.logger.Log(result)
+	//service.logger.Log(result)
+	fmt.Println("Concatenated response: ", result)
 }

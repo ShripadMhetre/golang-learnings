@@ -1,8 +1,0 @@
-struct 
-encapsulation
-
-interface
-polymorphism
-
-composition
-comparable

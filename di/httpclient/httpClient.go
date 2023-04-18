@@ -1,4 +1,4 @@
-package client
+package httpclient
 
 import (
 	"fmt"
@@ -30,7 +30,7 @@ type HttpClient struct {
 }
 
 func (client *HttpClient) Get(url string) string {
-	err := client.logger.Log("Getting " + url + "\n")
+	err := client.logger.Log("Getting " + url)
 
 	if err != nil {
 		fmt.Println(err)

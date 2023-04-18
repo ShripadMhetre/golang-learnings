@@ -1,0 +1,7 @@
+1. Aspects of OOP in Golang
+    - Composition
+    - Encapsulation
+    - Polymorphism
+2. Singleton pattern
+3. Dependency Injection
+4. DI using Wire => DI container by Google

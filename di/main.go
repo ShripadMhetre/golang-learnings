@@ -2,7 +2,7 @@ package di
 
 import (
 	"fmt"
-	"github.com/shripadmhetre/golang-learnings/di/client"
+	"github.com/shripadmhetre/golang-learnings/di/httpclient"
 	"github.com/shripadmhetre/golang-learnings/di/service"
 	"os"
 )
@@ -15,8 +15,9 @@ func Main() {
 	}
 	defer fl.Close()
 
-	logger := &client.FileLogger{File: fl}
-	httpClient := client.NewHttpClient(logger)
+	logger := &httpclient.FileLogger{File: fl}
+	logger2 := &httpclient.StdoutLogger{}
+	httpClient := httpclient.NewHttpClient(logger2)
 	service := service.NewConcatService(logger, httpClient)
 
 	// service := CreateConcatService()
